@@ -55,3 +55,18 @@
     executable = true
     refreshPeriod = "168h"
     path = "./eza"
+
+{{ $helixVersion := (gitHubLatestRelease "helix-editor/helix").TagName -}}
+[".local/bin/hx"]
+    type = "archive-file"
+    url = 'https://github.com/helix-editor/helix/releases/download/{{ $helixVersion }}/helix-{{ $helixVersion }}-x86_64-linux.tar.xz'
+    exact = true
+    executable = true
+    stripComponents = 1
+    path = "hx"
+
+[".config/helix/runtime"]
+    type = "archive"
+    url = 'https://github.com/helix-editor/helix/releases/download/{{ $helixVersion }}/helix-{{ $helixVersion }}-x86_64-linux.tar.xz'
+    exact = true
+    stripComponents = 1
