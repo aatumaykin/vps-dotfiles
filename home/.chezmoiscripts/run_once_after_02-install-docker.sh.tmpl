@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+source {{ .chezmoi.sourceDir }}/.scripts/helpers.sh
+
+sh -c "$(curl -fsSL https://get.docker.com/)"
