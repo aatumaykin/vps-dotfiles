@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+source {{ .chezmoi.sourceDir }}/.scripts/helpers.sh
+
+if is_installed "zsh"; then
+  chsh -s /bin/zsh
+fi

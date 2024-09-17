@@ -1,0 +1,8 @@
+packages:
+  - curl
+  - wget
+  - tmux
+  - mc
+  - htop
+  - ncdu
+  - zsh

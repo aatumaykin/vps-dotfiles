@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+source {{ .chezmoi.sourceDir }}/.scripts/helpers.sh
+
+if ! grep -q "^en_US.UTF-8 UTF-8" /etc/locale.gen; then
+    started "Updating locale..."
+
+    tee /etc/locale.gen > /dev/null << 'EOF'
+en_US.UTF-8 UTF-8
+en_GB.UTF-8 UTF-8
+EOF
+
+    locale-gen
+    update-locale LANG=en_US.UTF-8 LC_TIME=en_GB.UTF-8 LANGUAGE=en_US.UTF-8 LC_ALL=en_US.UTF-8 LC_CTYPE=UTF-8
+
+    finished "Updated locale..."
+fi

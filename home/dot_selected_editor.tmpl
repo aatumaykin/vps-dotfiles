@@ -1,0 +1,5 @@
+{{- if lookPath "helix" -}}
+SELECTED_EDITOR='helix'
+{{- else if lookPath "nano" -}}
+SELECTED_EDITOR='nano'
+{{- end }}

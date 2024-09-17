@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+set -eufo pipefail
+
+source {{ .chezmoi.sourceDir }}/.scripts/helpers.sh
+
+started "Installing packages..."
+
+apt-get update
+apt-get install -y -q {{ .packages | join " " }}
+
+finished "Installed packages"

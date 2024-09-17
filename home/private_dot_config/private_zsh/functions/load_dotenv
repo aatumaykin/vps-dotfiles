@@ -1,0 +1,20 @@
+load_dotenv() {
+    local file="$1"
+    if [ -f "$file" ]; then
+        echo "Exporting environment variables from $file"
+        while IFS='=' read -r key value; do
+            # Check if the line is not empty and does not start with a comment
+            if [ -n "$key" ] && [[ ! "$key" =~ ^#.* ]]; then
+                # Check if the key is a valid variable name
+                if [[ "$key" =~ ^[a-zA-Z_][a-zA-Z_0-9]*$ ]]; then
+                    # Export the variable
+                    export "$key=$value"
+                else
+                    echo "Invalid variable name: $key"
+                fi
+            fi
+        done < "$file"
+    else
+        echo "File not found: $file"
+    fi
+}

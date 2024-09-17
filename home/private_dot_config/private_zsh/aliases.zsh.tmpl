@@ -1,0 +1,47 @@
+if command -v eza >/dev/null 2>&1; then
+    alias ls="eza --icons --group-directories-first"
+    alias ll="eza --icons --group-directories-first -l"
+    alias l="eza --icons --group-directories-first -l -a"
+else
+    alias l='ls -lah --color=auto'
+    alias ll='ls -lh --color=auto'
+    alias la='ls -lAh --color=auto'
+fi
+
+if command -v bat >/dev/null 2>&1; then
+    alias cat=bat
+elif command -v batcat >/dev/null 2>&1; then
+    alias cat=batcat
+fi
+
+if command -v docker >/dev/null 2>&1; then
+    alias dils='docker image ls'
+    alias dirm='docker image rm'
+    alias dcps="docker compose ps"
+    alias dcupd="docker compose up -d"
+    alias dcdn="docker compose down"
+    alias dcpull="docker compose pull"
+fi
+
+if command -v git >/dev/null 2>&1; then
+    alias ga='git add'
+    alias gaa='git add --all'
+    alias gco='git checkout'
+    alias gcb='git checkout -b'
+    alias gcm='git checkout $(git_main_branch)'
+    alias gca='git commit --verbose --all'
+    alias gc!='git commit --verbose --amend'
+    alias gfo='git fetch origin'
+    alias ggpull='git pull origin "$(git_current_branch)"'
+    alias ggpush='git push origin "$(git_current_branch)"'
+    alias grbom='git rebase origin/$(git_main_branch)'
+    alias grh='git reset'
+    alias grhh='git reset --hard'
+    alias grhs='git reset --soft'
+    alias gst='git status'
+fi
+
+alias grep='grep --color'
+alias cz='chezmoi'
+
+alias upgrade="sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y"

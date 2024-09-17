@@ -1,0 +1,20 @@
+{{- $chezmoiForce := or (has "--force" .chezmoi.args) (has "--force=true" .chezmoi.args) -}}
+{{- $interactive := and stdinIsATTY (not $chezmoiForce) -}}
+
+{{- $personal := false -}}{{/* true if this machine should have personal secrets */}}
+{{- $headless := (env "SSH_CLIENT" | not | not) -}}{{/* true if this machine does not have a screen and keyboard */}}
+{{- $is_root := (eq .chezmoi.username "root") -}}
+{{- $is_installed := stat .chezmoi.configFile | not | not -}}
+
+{{- $osID := .chezmoi.os -}}
+{{- if (and (eq .chezmoi.os "linux") (hasKey .chezmoi.osRelease "id")) -}}
+{{-   $osID = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
+{{- end -}}
+
+{{- if $interactive -}}
+{{-   writeToStdout "\033[0;34m💡 Tip: you can re-enter your name and email with `chezmoi init --data=false`.\033[0m\n" -}}
+{{- end -}}
+
+[data]
+is_root = {{ $is_root }}
+osid = {{ $osID | quote}}

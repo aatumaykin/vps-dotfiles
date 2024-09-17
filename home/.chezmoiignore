@@ -1,0 +1,4 @@
+.oh-my-zsh/cache/**
+__pycache__
+README.md
+install

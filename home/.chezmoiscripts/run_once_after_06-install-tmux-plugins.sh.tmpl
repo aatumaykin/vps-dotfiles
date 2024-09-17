@@ -1,0 +1,7 @@
+#!/usr/bin/env zsh
+
+source {{ .chezmoi.sourceDir }}/.scripts/helpers.sh
+
+started "Installing tmux plugins"
+$HOME/.config/tmux/plugins/tpm/bin/install_plugins
+finished "Run after 10-configure.sh"

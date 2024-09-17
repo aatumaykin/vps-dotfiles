@@ -1,0 +1,29 @@
+theme = "catppuccin_mocha"
+
+[editor]
+shell = ["/bin/zsh", "--login", "-c"]
+cursorline = true
+cursorcolumn = true
+true-color = true
+color-modes = true
+bufferline = "always"
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.whitespace.render]
+space = "all"
+tab = "all"
+newline = "none"
+
+[editor.whitespace.characters]
+tabpad = "·"
+
+[editor.indent-guides]
+render = true
+skip-levels = 1
+
+[editor.soft-wrap]
+enable = true
