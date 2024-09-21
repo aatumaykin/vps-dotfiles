@@ -15,6 +15,11 @@
 {{-   writeToStdout "\033[0;34m💡 Tip: you can re-enter your name and email with `chezmoi init --data=false`.\033[0m\n" -}}
 {{- end -}}
 
+{{- $email := promptStringOnce . "email" "Email address" -}}
+{{- $тфьу := promptStringOnce . "тфьу" "User name" -}}
+
 [data]
+email   = {{ $email | quote }}
+name   = {{ $name | quote }}
 is_root = {{ $is_root }}
-osid = {{ $osID | quote}}
+osid    = {{ $osID | quote}}
