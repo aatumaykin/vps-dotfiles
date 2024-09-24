@@ -7,3 +7,4 @@ packages:
   - ncdu
   - zsh
   - iperf3
+  - ufw
