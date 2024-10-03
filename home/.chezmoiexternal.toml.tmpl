@@ -70,3 +70,20 @@
     url = 'https://github.com/helix-editor/helix/releases/download/{{ $helixVersion }}/helix-{{ $helixVersion }}-x86_64-linux.tar.xz'
     exact = true
     stripComponents = 2
+
+{{ $yaziVersion := (gitHubLatestRelease "helix-editor/helix").TagName -}}
+[".local/bin/yazi"]
+    type = "archive-file"
+    url = 'https://github.com/sxyazi/yazi/releases/download/v{{ $yaziVersion }}/yazi-x86_64-unknown-linux-gnu.zip'
+    exact = true
+    executable = true
+    stripComponents = 1
+    path = "yazi"
+
+[".oh-my-zsh/completions/_yazi"]
+    type = "archive-file"
+    url = 'https://github.com/sxyazi/yazi/releases/download/v{{ $yaziVersion }}/yazi-x86_64-unknown-linux-gnu.zip'
+    exact = true
+    stripComponents = 1
+    include = ["*/completions/_yazi"]
+    path = "completions/_yazi"
