@@ -71,7 +71,7 @@
     exact = true
     stripComponents = 2
 
-{{ $yaziVersion := (gitHubLatestRelease "helix-editor/helix").TagName -}}
+{{ $yaziVersion := (gitHubLatestRelease "sxyazi/yazi").TagName -}}
 [".local/bin/yazi"]
     type = "archive-file"
     url = 'https://github.com/sxyazi/yazi/releases/download/v{{ $yaziVersion }}/yazi-x86_64-unknown-linux-gnu.zip'
